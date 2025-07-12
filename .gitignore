@@ -1,0 +1,17 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+**/.vsconfig
+**/Saved
+**/Intermediate
+**/DerivedDataCache
+**/Binaries
+**/.vs
+**/.idea
+*.sln
+
+/Plugins/UnLua
+/Plugins/UnLuaExtensions
+/Plugins/UnLuaTestSuite
+/Plugins/LuaFramework/Intermediate/Build
