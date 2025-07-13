@@ -26,7 +26,8 @@ void ULuaWorldService::OnWorldBeginPlay(UWorld& InWorld)
 {
 	Super::OnWorldBeginPlay(InWorld);
 
-	LuaOnWorldBeginPlay();
+	UWorld* NewWorld = &InWorld;
+	LuaOnWorldBeginPlay(NewWorld);
 }
 
 

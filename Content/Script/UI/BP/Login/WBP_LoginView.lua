@@ -59,6 +59,12 @@ end
 function M:HandleItemClicked(Index)
     if Index <= #LoginData then 
         print(LoginData[Index].Name .. " clicked")
+
+        if Index == 1 then 
+            UE.UGameplayStatics.OpenLevel(self, "DemoMap1");
+        else 
+            UIManager:RemoveWidgetByName("LoginView");
+        end
     end
 end
 

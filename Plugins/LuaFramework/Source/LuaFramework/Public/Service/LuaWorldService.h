@@ -25,7 +25,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void LuaPostInit();
 	UFUNCTION(BlueprintImplementableEvent)
-	void LuaOnWorldBeginPlay();
+	void LuaOnWorldBeginPlay(UWorld* InWorld);
 
 	virtual bool ShouldCreateSubsystem(UObject* Outer) const override;
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;

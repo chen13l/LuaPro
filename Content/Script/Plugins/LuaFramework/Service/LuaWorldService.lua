@@ -1,25 +1,40 @@
 
 
-local WorldService = UnLua.Class();
+local LuaWorldService = UnLua.Class();
 
-function WorldService:LuaInit ()
+function LuaWorldService:LuaInit ()
     print("LuaWorldService initialized")
+
+    UIManager:LuaInit();
+    _G.LuaWorldService = self;
+    self._NewWorldName = nil;
 end
 
-function WorldService:LuaDeInit ()
-    print("LuaWorldService started")
-end
-
-function WorldService:LuaPostinit()
+function LuaWorldService:LuaPostinit()
     print("LuaWorldService post-initialization") 
+    UIManager:LuaPostinit();
 end
 
-function WorldService:LuaOnWorldBeginPlay()
+function LuaWorldService:LuaDeInit ()
+    print("LuaWorldService deinitialized")
+    UIManager:LuaDeInit();
+end
+
+function LuaWorldService:LuaOnWorldBeginPlay(InWorld)
     print("LuaWorldService world begin play")
 
-    local Path = '/Game/UI/BP/Login/WBP_LoginView.WBP_LoginView_C'
-    local Widget  = self:GetUserWidgetByPath(Path)
-    Widget:AddToViewport()
+    UIManager:LuaOnWorldBeginPlay(InWorld);
 end
 
-return WorldService;
+function LuaWorldService:LuaOpenLevel(InWorldName)
+    self._NewWorldName = InWorldName;
+    UE.UKismetSystemLibrary.K2_SetTimerDelegate({self,self.LuaOpenLevelInner},0.5,false);
+end
+
+function LuaWorldService:LuaOpenLevelInner()
+    if self._NewWorldName then
+        UE.UGameplayStatics.OpenLevel(self, self._NewWorldName);
+    end
+end
+
+return LuaWorldService;

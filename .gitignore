@@ -10,8 +10,10 @@
 **/.vs
 **/.idea
 *.sln
+**/.vscode
 
 /Plugins/UnLua
 /Plugins/UnLuaExtensions
 /Plugins/UnLuaTestSuite
 /Plugins/LuaFramework/Intermediate/Build
+/Content/Script/Debugger
